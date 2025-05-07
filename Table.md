@@ -50,9 +50,20 @@ front-end-ts
 │   │   │   │   ├── forgotPassword.css
 │   │   │   │   ├── resetPassword.css
 │   │   │   │   ├── signIn_signUp.css
+│   │   │   ├── authContainer.tsx
 │   │   │   ├── signIn.tsx
 │   │   │   ├── signUp.tsx
 │   │   ├── admin
+│   │   │   ├── dashboard
+│   │   │   │   ├── dashboard.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   ├── sidebar.tsx
+│   │   │   │   │   ├── header.tsx
+│   │   │   │   │   ├── footer.tsx
+│   │   │   │   │   ├── content.tsx
+│   │   │   │   │   ├── widgets.tsx
+│   │   │   │   │   ├── table.tsx
+│   │   │   │   ├── dashboard.css
 │   │   │   ├── dashboard.tsx
 │   │   │   ├── bookingManagement
 │   │   │   │   ├── allBookings.tsx
@@ -61,6 +72,18 @@ front-end-ts
 │   │   │   │   ├── busList.tsx
 │   │   │   │   ├── taxiList.tsx
 │   │   │   │   ├── tourList.tsx
+│   │   │   ├── userManagement
+│   │   │   │   ├── indexUser.tsx
+│   │   │   │   ├── userSignUp.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   ├── userTable.tsx
+│   │   │   │   │   ├── userDetailsModal.tsx
+│   │   │   │   │   ├── registerUserModal.tsx
+│   │   │   │   │   ├── loginUserModal.tsx
+│   │   │   │   ├── NOTE.md
+│   │   │   ├── revenueManagement
+│   │   │   │   ├── NOTE.md
+│   │   │   │   ├── revenue.tsx
 │   │   ├── payment_page
 │   │   │   ├── payment_css
 │   │   │   │   ├── payment.css

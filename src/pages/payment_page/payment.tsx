@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import { momoPayment, shopeePayPayment, zaloPayPayment, bankPayment } from "../../api";
+import { momoPayment, shopeePayPayment, zaloPayPayment, bankPayment } from "../../api/indexApi";
 import "./payment_css/payment.css";
 
 const Payment: React.FC = () => {
@@ -45,11 +45,11 @@ const Payment: React.FC = () => {
               value="momo"
               onChange={(e) => setSelectedMethod(e.target.value)}
             />
-            <img
-              src="/images/momo-logo.png"
-              alt="Momo"
-              className="payment-icon"
-            />
+<img
+  src="https://homepage.momocdn.net/fileuploads/svg/momo-file-240411162904.svg"
+  alt="Momo"
+  className="payment-icon"
+/>
             Ví điện tử Momo
           </label>
           <label>
@@ -60,7 +60,7 @@ const Payment: React.FC = () => {
               onChange={(e) => setSelectedMethod(e.target.value)}
             />
             <img
-              src="/images/shopeepay-logo.png"
+              src="https://shopeepay.vn/static/media/shopeePayLogo2022.67d2e522e841720cf971c77142ace5e4.svg"
               alt="ShopeePay"
               className="payment-icon"
             />
@@ -74,7 +74,7 @@ const Payment: React.FC = () => {
               onChange={(e) => setSelectedMethod(e.target.value)}
             />
             <img
-              src="/images/zalopay-logo.png"
+              src="https://simg.zalopay.com.vn/zlp-website/assets/new_logo_6c5db2d21b.svg"
               alt="ZaloPay"
               className="payment-icon"
             />
@@ -88,7 +88,7 @@ const Payment: React.FC = () => {
               onChange={(e) => setSelectedMethod(e.target.value)}
             />
             <img
-              src="/images/bank-logo.png"
+              src="https://th.bing.com/th/id/OIP.LPjQCLIZq5DUOZotwTcCNQHaE8?w=260&h=180&c=7&pcl=292827&r=0&o=5&cb=iwc1&dpr=1.4&pid=1.7"
               alt="Thẻ ngân hàng"
               className="payment-icon"
             />
@@ -102,7 +102,7 @@ const Payment: React.FC = () => {
               onChange={(e) => setSelectedMethod(e.target.value)}
             />
             <img
-              src="/images/cash-logo.png"
+              src="https://th.bing.com/th/id/OIP.0MK8h2k7LhPZ7OdFdfh9tAHaEq?w=274&h=180&c=7&pcl=292827&r=0&o=5&cb=iwc1&dpr=1.4&pid=1.7"
               alt="Thanh toán trực tiếp"
               className="payment-icon"
             />

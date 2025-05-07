@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./auth_css/SignIn_SignUp.css";
 import { useNavigate } from "react-router-dom";
 
-import { signIn } from "../../api/index";
+import { signIn } from "../../api/indexApi";
 
 
 interface SignInProps {

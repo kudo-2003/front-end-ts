@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./auth_css/SignIn_SignUp.css"
-import { signUp } from "../../api/index"; 
+import { signUp } from "../../api/indexApi"; 
 interface SignUpProps {
   onAuthSuccess: () => void;
 }

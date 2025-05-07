@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./dashboard.css";
-import Revenue from "./revenueManagement/revenue";
+import Revenue from "../revenueManagement/revenue";
 
 const Dashboard: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState<string>("Trang chủ");

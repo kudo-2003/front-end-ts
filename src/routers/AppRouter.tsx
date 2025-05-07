@@ -2,17 +2,16 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../pages/home/home";
 import BusTicket from "../pages/BusTicket/BusTicket";
-import AuthContainer from "../pages/Auth/AuthContainer";
 import Payment from "../pages/payment_page/payment";
-import { ForgotPassword } from "../pages/Auth/ForgotPassword";
-import { ResetPassword } from "../pages/Auth/ResetPassword";
+import { ForgotPassword } from "../pages/auth/forgotPassword";
 import PromotionDetail from "../pages/PromotionDetail/PromotionDetail";
 import FAQ from "../pages/FAQ/FAQ";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 import TermsOfService from "../pages/TermsOfService/TermsOfService";
 
-import AdminSignInPage from "../pages/Auth/adminSignIn";
-import Dashboard from "../pages/admin/dashboard";
+import { AdminSignInPage, AuthContainer, ResetPassword } from "../pages/auth/indexAuth";
+
+import Dashboard from "../pages/admin/dashboard/indexDashboard";
 
 const AppRouter: React.FC = () => {
   return (

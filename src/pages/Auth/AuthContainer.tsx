@@ -6,15 +6,15 @@ interface AuthContainerProps {
   onAuthSuccess: () => void;
 }
 
-export default function AuthContainer({ onAuthSuccess }: AuthContainerProps) {
+function AuthContainer({ onAuthSuccess }: AuthContainerProps) {
   const [isSignUp, setIsSignUp] = useState(false);
 
   const toggleAuth = useCallback(() => {
-    setIsSignUp((prev) => !prev); // Chuyển đổi giữa đăng nhập và đăng ký
+    setIsSignUp((prev) => !prev); 
   }, []);
 
   const handleAuthSuccess = () => {
-    onAuthSuccess(); // Gọi callback khi đăng nhập/đăng ký thành công
+    onAuthSuccess(); 
   };
 
   return (
@@ -44,3 +44,5 @@ export default function AuthContainer({ onAuthSuccess }: AuthContainerProps) {
     </div>
   );
 }
+
+export { AuthContainer };

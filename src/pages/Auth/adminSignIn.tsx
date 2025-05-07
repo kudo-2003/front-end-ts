@@ -57,4 +57,4 @@ const AdminSignInPage: React.FC = () => {
   );
 };
 
-export default AdminSignInPage;
+export { AdminSignInPage };

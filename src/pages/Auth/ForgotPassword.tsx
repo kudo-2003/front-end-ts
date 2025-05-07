@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { forgotPassword } from "../../api/index"; // Adjust the import path as necessary
+import { forgotPassword } from "../../api/indexApi"; // Adjust the import path as necessary
 
 import "./auth_css/ForgotPassword.css";
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Modal, message } from "antd";
+import { Table, Button, Modal, message, Form, Input, Rate } from "antd";
+import UserSignUp from "./userSignUp";
 
 interface User {
     id: number;
@@ -7,6 +8,7 @@ interface User {
     email: string;
     ticketsPurchased: number;
     ticketsCancelled: number;
+    rating?: number;
 }
 
 const UserManagement: React.FC = () => {
@@ -14,14 +16,15 @@ const UserManagement: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
+    const [isRegisterModalVisible, setIsRegisterModalVisible] = useState(false);
+    const [isLoginModalVisible, setIsLoginModalVisible] = useState(false);
 
     useEffect(() => {
-        // Fetch user data (replace with your API call)
         setLoading(true);
         setTimeout(() => {
             setUsers([
-                { id: 1, name: "John Doe", email: "john@example.com", ticketsPurchased: 5, ticketsCancelled: 2 },
-                { id: 2, name: "Jane Smith", email: "jane@example.com", ticketsPurchased: 3, ticketsCancelled: 1 },
+                { id: 1, name: "John Doe", email: "john@example.com", ticketsPurchased: 5, ticketsCancelled: 2, rating: 4 },
+                { id: 2, name: "Jane Smith", email: "jane@example.com", ticketsPurchased: 3, ticketsCancelled: 1, rating: 5 },
             ]);
             setLoading(false);
         }, 1000);
@@ -38,9 +41,36 @@ const UserManagement: React.FC = () => {
     };
 
     const handleDeleteUser = (userId: number) => {
-        // Delete user logic (replace with your API call)
         setUsers(users.filter((user) => user.id !== userId));
         message.success("User deleted successfully");
+    };
+
+    const handleRegister = (values: { name: string; email: string }) => {
+        const newUser: User = {
+            id: users.length + 1,
+            name: values.name,
+            email: values.email,
+            ticketsPurchased: 0,
+            ticketsCancelled: 0,
+        };
+        setUsers([...users, newUser]);
+        message.success("User registered successfully");
+        setIsRegisterModalVisible(false);
+    };
+
+    const handleLogin = (values: { email: string }) => {
+        const user = users.find((user) => user.email === values.email);
+        if (user) {
+            message.success(`Welcome back, ${user.name}`);
+            setIsLoginModalVisible(false);
+        } else {
+            message.error("User not found");
+        }
+    };
+
+    const handleRateUser = (userId: number, rating: number) => {
+        setUsers(users.map(user => user.id === userId ? { ...user, rating } : user));
+        message.success("User rated successfully");
     };
 
     const columns = [
@@ -65,6 +95,14 @@ const UserManagement: React.FC = () => {
             key: "ticketsCancelled",
         },
         {
+            title: "Rating",
+            dataIndex: "rating",
+            key: "rating",
+            render: (rating: number, record: User) => (
+                <Rate value={rating} onChange={(value) => handleRateUser(record.id, value)} />
+            ),
+        },
+        {
             title: "Actions",
             key: "actions",
             render: (_: any, record: User) => (
@@ -83,6 +121,12 @@ const UserManagement: React.FC = () => {
     return (
         <div>
             <h1>User Management</h1>
+            <Button type="primary" onClick={() => setIsRegisterModalVisible(true)}>
+                Register User
+            </Button>
+            <Button style={{ marginLeft: 8 }} onClick={() => setIsLoginModalVisible(true)}>
+                Login
+            </Button>
             <Table
                 dataSource={users}
                 columns={columns}
@@ -105,8 +149,31 @@ const UserManagement: React.FC = () => {
                         <p><strong>Email:</strong> {selectedUser.email}</p>
                         <p><strong>Tickets Purchased:</strong> {selectedUser.ticketsPurchased}</p>
                         <p><strong>Tickets Cancelled:</strong> {selectedUser.ticketsCancelled}</p>
+                        <p><strong>Rating:</strong> {selectedUser.rating || "Not rated yet"}</p>
                     </div>
                 )}
+            </Modal>
+            <UserSignUp
+                visible={isRegisterModalVisible}
+                onCancel={() => setIsRegisterModalVisible(false)}
+                onRegister={handleRegister}
+            />
+            <Modal
+                title="Login"
+                visible={isLoginModalVisible}
+                onCancel={() => setIsLoginModalVisible(false)}
+                footer={null}
+            >
+                <Form onFinish={handleLogin}>
+                    <Form.Item name="email" label="Email" rules={[{ required: true, message: "Please input the email!" }]}>
+                        <Input />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit">
+                            Login
+                        </Button>
+                    </Form.Item>
+                </Form>
             </Modal>
         </div>
     );
